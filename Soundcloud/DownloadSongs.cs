@@ -22,12 +22,15 @@ namespace Soundcloud
             return System.Text.RegularExpressions.Regex.Replace(name, invalidReStr, "_");
         }
 
+        private int answer;
+
         public void downloadSongs()
         {
             Program sync = new Program();
 
             try
             {
+
                 string basedir = Directory.GetCurrentDirectory();
                 string ResolveUrl = "http://api.soundcloud.com/resolve.xml?url=http://soundcloud.com/" + Settings.Default.userSaved + "/&client_id=" + Settings.Default.apiKey;
 
@@ -38,7 +41,7 @@ namespace Soundcloud
 
                 sync.colortext("Press [1] To Download All The Users Tracks, Press [2] To Download User Likes", "Green");
 
-                int answer = Convert.ToInt16(Console.ReadLine());
+                answer = Convert.ToInt16(Console.ReadLine());
                 doc = new XmlDataDocument();
 
                 if (answer == 1)
@@ -51,7 +54,6 @@ namespace Soundcloud
                     string UserUrl = "http://api.soundcloud.com/users/" + userid + "/favorites.xml?client_id=" + Settings.Default.apiKey;
                     doc.Load(UserUrl);
                 }
-
                 sync.colortext("MSG: Getting downloadable tracks..", "green");
                 Console.WriteLine("-----------------------------------");
 
@@ -81,16 +83,20 @@ namespace Soundcloud
                             Console.SetCursorPosition(0, Console.CursorTop - 1);
                             client.DownloadFile(downloadurl, folderstructure + @"\" + filename);
                             sync.colortext("Complete: " + title + "          ", "green");
-
                         }
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                sync.colortext("MSG: The Username Is Incorrect.", "Red");
-
-                sync.setupConf();
+                if (answer != 1 || answer != 2)
+                {
+                    sync.colortext("MSG: Please Enter In A Valid Option.", "Red");
+                }
+                else if (answer == 1 || answer == 2)
+                {
+                    sync.colortext(e.ToString(), "Red");
+                }
             }
         }
     }

@@ -8,14 +8,6 @@ using System.Threading.Tasks;
 using System.Xml;
 using Soundcloud.Properties;
 
-/// <summary>
-/// Interaction logic for Window1.xaml
-/// </summary>
-/// <remarks>
-/// The original base of this code is locatated at -
-/// http://distortednetworks.com/proj/
-/// </remarks>
-
 namespace Soundcloud
 {
     class Program
@@ -89,5 +81,4 @@ namespace Soundcloud
 
     }
 }
-
 
