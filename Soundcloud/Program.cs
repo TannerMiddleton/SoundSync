@@ -10,46 +10,61 @@ using Soundcloud.Properties;
 
 namespace Soundcloud
 {
+    /// <summary>
+    /// Interaction logic for Window1.xaml
+    /// </summary>
+    /// <remarks>
+    /// The original base of this code is locatated at -
+    /// http://distortednetworks.com/proj/
+    /// </remarks>
     class Program
     {
 	    static void Main(string[] args)
         {
-             bool continueApp = true;
+            Program sync = new Program();
 
-             while (continueApp == true)
-             {
-                 Program sync = new Program();
+            bool continueApp = true;
 
-                 if (Settings.Default.userSaved != "")
-                 {
-                     sync.colortext("MSG: Do you want to use [ " + Settings.Default.userSaved + " ] as the user? [Y/N]", "green");
-                     string answer = Console.ReadLine();
+            while (continueApp == true)
+            {
+                if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable() == true)
+                {
+                    if (Settings.Default.userSaved != "")
+                    {
+                        sync.colortext("MSG: Do you want to use [ " + Settings.Default.userSaved + " ] as the user? [Y/N]", "green");
+                        string answer = Console.ReadLine();
 
-                     if (answer.ToLower() == "n")
-                     {
-                         sync.setupConf();
+                        if (answer.ToLower() == "n")
+                        {
+                            sync.setupConf();
 
-                         sync.downloadSongs();
-                     }
-                     else if (answer.ToLower() == "y")
-                     {
-                         sync.downloadSongs();
-                     }
-                 }
-                 else if (Settings.Default.userSaved == "")
-                 {
-                     sync.setupConf();
-                     sync.downloadSongs();
-                 }
+                            sync.downloadSongs();
+                        }
+                        else if (answer.ToLower() == "y")
+                        {
+                            sync.downloadSongs();
+                        }
+                    }
+                    else if (Settings.Default.userSaved == "")
+                    {
+                        sync.setupConf();
+                        sync.downloadSongs();
+                    }
 
-                 sync.colortext("MSG: Would You Like To Continue? [Y/N]", "Green");
+                    sync.colortext("MSG: Would You Like To Continue? [Y/N]", "Green");
 
-                 string loop = Console.ReadLine();
+                    string loop = Console.ReadLine();
 
-                 if (loop.ToLower() == "n")
-                 {
-                     continueApp = false;
-                 }
+                    if (loop.ToLower() == "n")
+                    {
+                        continueApp = false;
+                    }
+                }
+                else if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable() == false)
+                {
+                    sync.colortext("MSG: No Internet Connection Available!", "Red");
+                    continueApp = false;
+                }
              }
         }
 
