@@ -5,5 +5,8 @@
     <Setting Name="userSaved" Type="System.String" Scope="User">
       <Value Profile="(Default)">tanner-middleton</Value>
     </Setting>
+    <Setting Name="apiKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

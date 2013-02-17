@@ -34,5 +34,17 @@ namespace Soundcloud.Properties {
                 this["userSaved"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string apiKey {
+            get {
+                return ((string)(this["apiKey"]));
+            }
+            set {
+                this["apiKey"] = value;
+            }
+        }
     }
 }
