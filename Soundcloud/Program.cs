@@ -16,6 +16,7 @@ using Soundcloud.Properties;
 /// http://distortednetworks.com/proj/
 /// </remarks>
 
+
 namespace Soundcloud
 {
     class Program
@@ -33,6 +34,8 @@ namespace Soundcloud
                 {
                     if (Settings.Default.userSaved != "")
                     {
+                        download.changePath();
+
                         sync.colortext("MSG: Do you want to use [ " + Settings.Default.userSaved + " ] as the user? [Y/N]", "green");
                         string answer = Console.ReadLine();
 
@@ -49,6 +52,7 @@ namespace Soundcloud
                     }
                     else if (Settings.Default.userSaved == "")
                     {
+                        download.changePath();
                         sync.setupConf();
                         download.downloadSongs();
                     }
@@ -86,7 +90,7 @@ namespace Soundcloud
             Settings.Default.userSaved = Console.ReadLine();
             Settings.Default.Save();
         }
-
     }
 }
+
 

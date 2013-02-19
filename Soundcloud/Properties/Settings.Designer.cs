@@ -25,7 +25,7 @@ namespace Soundcloud.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("tanner-middleton")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string userSaved {
             get {
                 return ((string)(this["userSaved"]));
@@ -44,6 +44,30 @@ namespace Soundcloud.Properties {
             }
             set {
                 this["apiKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string chooseDirectory {
+            get {
+                return ((string)(this["chooseDirectory"]));
+            }
+            set {
+                this["chooseDirectory"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool savedDirectory {
+            get {
+                return ((bool)(this["savedDirectory"]));
+            }
+            set {
+                this["savedDirectory"] = value;
             }
         }
     }

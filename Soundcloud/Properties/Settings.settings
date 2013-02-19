@@ -3,10 +3,16 @@
   <Profiles />
   <Settings>
     <Setting Name="userSaved" Type="System.String" Scope="User">
-      <Value Profile="(Default)">tanner-middleton</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="apiKey" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="chooseDirectory" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="savedDirectory" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>
